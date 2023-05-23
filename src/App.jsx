@@ -1,7 +1,6 @@
 import Display from "./components/Display.jsx";
-import Number from "./components/Number.jsx";
-import Symbol from "./components/Symbol.jsx";
-import Sign from "./components/Sign.jsx";
+import {Button} from "./components/Button.jsx";
+
 import {CalculatorProvider} from "./contexts/Calculator.jsx";
 
 function App() {
@@ -11,30 +10,28 @@ function App() {
                 <CalculatorProvider>
                     <Display/>
                     <div className={"grid grid-cols-4 gap-2 mt-3 text-center"}>
-                        <Symbol symbolLabel={"AC"}/>
-                        <Symbol symbolLabel={"%"}/>
-                        <Symbol symbolLabel={"÷"}/>
-                        <Sign signLabel={"×"}/>
+                        <Button buttonLabel={"AC"} className={"px-2"} style={"gray"}/>
+                        <Button buttonLabel={"%"} style={"gray"}/>
+                        <Button buttonLabel={"÷"} style={"gray"}/>
+                        <Button buttonLabel={"×"} style={"amber"}/>
 
                     </div>
                     <div className={"grid grid-cols-4"}>
                         <div className={"w-full grid grid-cols-4 col-span-4 gap-2 mt-3"}>
-                            <Number numberLabel={"7"}/>
-                            <Number numberLabel={"8"}/>
-                            <Number numberLabel={"9"}/>
-                            <Sign signLabel={"-"} style={"operator"}/>
-                            <Number numberLabel={"4"}/>
-                            <Number numberLabel={"5"}/>
-                            <Number numberLabel={"6"}/>
-                            <Sign signLabel={"+"}/>
-                            <Number numberLabel={"1"}/>
-                            <Number numberLabel={"2"}/>
-                            <Number numberLabel={"3"}/>
-                            <Sign signLabel={","}/>
-                        </div>
-                        <div className={"w-full grid grid-cols-2 col-span-4 gap-2 mt-3 text-center"}>
-                            <Number numberLabel={"0"}/>
-                            <Sign signLabel={"="}/>
+                            <Button buttonLabel={"7"}/>
+                            <Button buttonLabel={"8"}/>
+                            <Button buttonLabel={"9"}/>
+                            <Button buttonLabel={"-"} style={"amber"}/>
+                            <Button buttonLabel={"4"}/>
+                            <Button buttonLabel={"5"}/>
+                            <Button buttonLabel={"6"}/>
+                            <Button buttonLabel={"+"} style={"amber"}/>
+                            <Button buttonLabel={"1"}/>
+                            <Button buttonLabel={"2"}/>
+                            <Button buttonLabel={"3"}/>
+                            <Button buttonLabel={"="} className={"row-span-2 px-2"} style={"amber"}/>
+                            <Button buttonLabel={"0"} className={"col-span-2"}/>
+                            <Button buttonLabel={","} style={"amber"}/>
                         </div>
                     </div>
                 </CalculatorProvider>
