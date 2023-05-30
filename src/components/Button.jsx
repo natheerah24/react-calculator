@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { useCalculatorDispatch } from "../contexts/Calculator.jsx";
+import {useCalculatorDispatch} from "../contexts/Calculator.jsx";
 
 const buttonStyles = {
     normal: 'bg-slate-500 rounded-md hover:bg-slate-600 ease-in duration-300',
@@ -13,11 +13,11 @@ export function Button(props) {
 
     const handleButton = (input) => {
         if (input === 'AC') {
-            calculatorDispatch({ type: 'clear' });
+            calculatorDispatch({type: 'clear'});
             return;
         }
         if (input === '=') {
-            calculatorDispatch({ type: 'evaluate' });
+            calculatorDispatch({type: 'evaluate'});
             return;
         }
         if (input === '×') {
@@ -26,7 +26,7 @@ export function Button(props) {
         if (input === '÷') {
             input = '/';
         }
-        calculatorDispatch({ type: 'input', input });
+        calculatorDispatch({type: 'input', input});
     };
 
     return (

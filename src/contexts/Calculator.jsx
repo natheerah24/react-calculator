@@ -45,11 +45,10 @@ function calculatorReducer(event, action) {
         case "clear": {
             return {event, evaluationString: '', result: 0};
         }
-        case "evaluate":
-            {
-                const result = evaluate(event.evaluationString);
-                return {event, evaluationString: '', result};
-            }
+        case "evaluate": {
+            const result = evaluate(event.evaluationString);
+            return {event, evaluationString: '', result};
+        }
 
         default: {
             throw Error('Unknown action: ' + action.type);

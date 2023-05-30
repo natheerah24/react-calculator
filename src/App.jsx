@@ -5,7 +5,7 @@ import {CalculatorProvider} from "./contexts/Calculator.jsx";
 
 function App() {
     return (
-        <div className={"container max-w-sm mx-auto mt-28  "}>
+        <div className={"container max-w-sm mx-auto mt-28"}>
             <div className={"w-full rounded-lg bg-black shadow-2xl p-2 my-2 shadow-slate-950 "}>
                 <CalculatorProvider>
                     <Display/>
@@ -31,7 +31,7 @@ function App() {
                             <Button buttonLabel={"3"}/>
                             <Button buttonLabel={"="} className={"row-span-2 px-2"} style={"amber"}/>
                             <Button buttonLabel={"0"} className={"col-span-2"}/>
-                            <Button buttonLabel={","} style={"amber"}/>
+                            <Button buttonLabel={"."} style={"amber"}/>
                         </div>
                     </div>
                 </CalculatorProvider>
