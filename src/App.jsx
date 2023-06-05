@@ -1,11 +1,13 @@
-import Display from "./components/Display.jsx";
-import {Button} from "./components/Button.jsx";
-
-import {CalculatorProvider} from "./contexts/Calculator.jsx";
+import React from 'react';
+import ReactDOM from 'react-dom';
+import Display from './components/Display.jsx';
+import { Button } from './components/Button.jsx';
+import { CalculatorProvider } from './contexts/Calculator.jsx';
+import { CalculatorHistory } from './components/CalculatorHistory.jsx';
 
 function App() {
     return (
-        <div className={"container max-w-sm mx-auto mt-28"}>
+        <div className={"container max-w-sm mx-auto static mt-20"}>
             <div className={"w-full rounded-lg bg-black shadow-2xl p-2 my-2 shadow-slate-950 "}>
                 <CalculatorProvider>
                     <Display/>
@@ -33,11 +35,12 @@ function App() {
                             <Button buttonLabel={"0"} className={"col-span-2"}/>
                             <Button buttonLabel={"."} style={"amber"}/>
                         </div>
+                        {ReactDOM.createPortal(<CalculatorHistory />, document.getElementById('calculatorHistory'))}
                     </div>
                 </CalculatorProvider>
             </div>
         </div>
-    )
+    );
 }
 
-export default App
+export default App;
