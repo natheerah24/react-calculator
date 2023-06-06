@@ -1,7 +1,6 @@
-import React, { createContext, useContext, useReducer } from 'react';
+import React, { createContext, useContext, useReducer, useEffect } from 'react';
 import { evaluate } from 'mathjs';
 import PropTypes from 'prop-types';
-// import { CalculatorHistory } from '../components/CalculatorHistory.jsx';
 
 const CalculatorContext = createContext();
 const CalculatorDispatch = createContext();
@@ -12,8 +11,28 @@ const initialCalculator = {
     result: 0,
 };
 
+const number = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
+const operator = ['+', '-', '*', '/', '.', '%'];
+
 export function CalculatorProvider({ children }) {
     const [state, dispatch] = useReducer(calculatorReducer, initialCalculator);
+
+    function handleKeyEvent(e) {
+        if (number.includes(e.key) || operator.includes(e.key)) {
+            dispatch({
+                type: 'input',
+                input: e.key,
+            });
+        }
+    }
+
+    useEffect(() => {
+        document.addEventListener('keydown', handleKeyEvent);
+
+        return () => {
+            document.removeEventListener('keydown', handleKeyEvent);
+        };
+    }, []);
 
     return (
         <CalculatorContext.Provider value={state}>
@@ -50,17 +69,15 @@ function calculatorReducer(state, action) {
                 result: 0,
             };
         case 'evaluate': {
+            const { evaluationString } = state;
+            const result = evaluate(evaluationString);
+            const cal = `${evaluationString} = ${result}`;
 
             return {
                 ...state,
                 evaluationString: '',
-                result: evaluate(state.evaluationString),
-                history: [
-                    ...state.history,
-                    {
-                        cal: `${state.evaluationString} = ${evaluate(state.evaluationString)}`,
-                    },
-                ],
+                result,
+                history: [...state.history, { cal }],
             };
         }
         default:

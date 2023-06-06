@@ -1,9 +1,10 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
 import Display from './components/Display.jsx';
 import { Button } from './components/Button.jsx';
 import { CalculatorProvider } from './contexts/Calculator.jsx';
 import { CalculatorHistory } from './components/CalculatorHistory.jsx';
+import {createPortal} from "react-dom";
+
+const calculatorHistory = document.getElementById('calculatorHistory');
 
 function App() {
     return (
@@ -35,7 +36,10 @@ function App() {
                             <Button buttonLabel={"0"} className={"col-span-2"}/>
                             <Button buttonLabel={"."} style={"amber"}/>
                         </div>
-                        {ReactDOM.createPortal(<CalculatorHistory />, document.getElementById('calculatorHistory'))}
+                        {createPortal(
+                            <CalculatorHistory/>,
+                            calculatorHistory
+                        )}
                     </div>
                 </CalculatorProvider>
             </div>
