@@ -75,7 +75,7 @@ function calculatorReducer(state, action) {
 
             return {
                 ...state,
-                evaluationString: '',
+                evaluationString: `${result}`,
                 result,
                 history: [...state.history, { cal }],
             };
