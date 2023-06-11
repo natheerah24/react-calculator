@@ -1,7 +1,14 @@
 import React from 'react';
-import {useCalculator} from '../contexts/Calculator.jsx';
+import {useCalculator, useCalculatorDispatch} from '../contexts/Calculator.jsx';
 
 export function CalculatorHistory() {
+    const calculatorDispatch = useCalculatorDispatch();
+
+    const handleButton = (input) => {
+        if (input === 'clearHistory') {
+            calculatorDispatch({type: 'clearHistory'});
+        }
+    }
     const calculator = useCalculator();
     return (
         <div>
@@ -12,6 +19,10 @@ export function CalculatorHistory() {
                     <div key={index}>{item.cal}</div>
                 ))}
             </div>
+            <button onClick={() => {
+                handleButton('clearHistory')
+            }}>Clear History
+            </button>
         </div>
     );
 }

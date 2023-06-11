@@ -68,6 +68,11 @@ function calculatorReducer(state, action) {
                 evaluationString: '',
                 result: 0,
             };
+        case 'clearHistory':
+            return {
+                ...state,
+                history: []
+            };
         case 'evaluate': {
             const { evaluationString } = state;
             const result = evaluate(evaluationString);
